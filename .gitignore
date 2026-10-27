@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+*.db
+*.db-journal
+*.sqlite*
+data/*
+!data/.gitkeep
+backups/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.log
+exports/
+*.egg-info/

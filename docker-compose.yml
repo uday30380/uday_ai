@@ -1,0 +1,14 @@
+# Optional. Uses only the public python image; no paid registry or service.
+services:
+  uday-ai:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: sqlite:////app/data/uday_ai.db
+      # Reach Ollama running on the host machine:
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

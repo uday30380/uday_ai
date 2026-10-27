@@ -1,0 +1,19 @@
+services:
+  - type: worker
+    name: uday-ai-bot
+    env: python
+    buildCommand: pip install -r requirements.txt && python scripts/init_db.py
+    startCommand: python -m app.main
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: DATABASE_URL
+        value: sqlite:///./data/uday_ai.db
+      - key: APP_TIMEZONE
+        value: Asia/Kolkata
+      - key: ENABLE_DAILY_BRIEFING
+        value: "true"
+      - key: DAILY_BRIEFING_TIME
+        value: "07:00"
