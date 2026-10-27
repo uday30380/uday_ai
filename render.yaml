@@ -1,7 +1,8 @@
 services:
-  - type: worker
-    name: uday-ai-bot
+  - type: web
+    name: uday-ai
     env: python
+    plan: free
     buildCommand: pip install -r requirements.txt && python scripts/init_db.py
     startCommand: python -m app.main
     envVars:
@@ -17,3 +18,11 @@ services:
         value: "true"
       - key: DAILY_BRIEFING_TIME
         value: "07:00"
+      - key: AI_PROVIDER
+        value: openai_compatible
+      - key: HOSTED_AI_BASE_URL
+        value: https://api.groq.com/openai/v1
+      - key: HOSTED_AI_API_KEY
+        sync: false
+      - key: HOSTED_AI_MODEL
+        value: openai/gpt-oss-120b
